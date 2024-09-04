@@ -1,0 +1,31 @@
+Let's cover the second
+challenge of set sampling. Let's say we sampled a test
+set from the dataset. Sometimes, the size of the test set is
+a fraction of the full dataset like 10%. Other times, in human comparison studies, because the test set needs to be annotated
+by human readers, the bottleneck for the test set size is how many examples
+can readers be expected to read? Typically, test sets contain
+at least hundreds of examples in medical AI studies. The challenge with sampling a test
+set is that when we're randomly sampling a test set of hundreds
+of examples from the dataset, we might not sample any patients
+that actually have a disease. Here, we might not sample any examples
+where the label for mass is 1. Thus, we would have no way to actually
+test the performance of the model on these positive cases. This is especially a problem with
+medical data where we might already have a small dataset and
+not that many examples of each disease. One way that this is tackled when creating
+test sets is to sample a test set such that we have at least X% of
+examples of our minority class. Here, the minority class
+is simply the class for which we have few examples like here
+examples where mass is present. One common choice of X is 50%. So for sampling a dataset of 100 examples, we would have 50 examples of mass and
+50 of not mass. This ensures that the study will have
+sufficient numbers to get a good estimate of the performance of the model both
+on non-disease and on disease examples. Once we sample the test set, typically, the validation set is
+sampled next before training. Because we want our validation set to
+reflect the distribution in the test set, typically, the same
+sampling strategy is used. We might decide to have once again
+100 examples in the validation set of which 50 are mass and 50 are non-mass. Finally, the remaining patients can
+be included in the training set. Because the test and
+validation set have been artificially sampled to have
+a large fraction of mass examples, the training set will have a much
+smaller fraction of mass examples. You have seen that we can still train
+a model in the presence of imbalance data. So this covers our second
+challenge of set sampling.

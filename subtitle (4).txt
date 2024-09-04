@@ -1,0 +1,18 @@
+One major question in testing a model is
+how we determine the correct label for an example. The right label is more commonly called
+the ground truth in the context of machine learning or the reference
+standard in the context of medicine. On a chest X-ray, differentiating
+between some diseases might be complex. We might have one expert
+say this is pneumonia, another experts say it's another disease. This is called interobserver
+disagreement, and is common in medical settings. The challenge here is how we can
+set the ground truth required for the evaluation of algorithms in the
+presence of interobserver disagreement. So how do we determine the ground
+truth in the presence of interobserver disagreement? We can use the consensus voting method. The idea behind consensus voting
+is to use a group of human experts to determine the ground truth. In one setting, we can have three
+radiologists look at a chest X-ray and each determine whether there
+is pneumonia present or not. If two out of the three say, yes,
+then we would say the answer is yes. In general, the answer will be the
+majority vote of the three radiologists. Alternatively, we can have the three
+radiologists get into a room and discuss their interpretation until
+they reach a single decision, which can then be used
+as the ground truth.

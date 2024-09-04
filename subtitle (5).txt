@@ -1,0 +1,36 @@
+The second method is to use a more
+definitive test which provides additional information
+to set the ground truth. For example, to determine whether
+a patient has a mass using a chest x-ray, a more definitive test that
+can be performed is a CT scan. The CT scan shows the 3D structure
+of the potential abnormality, thus giving the radiologist
+more information. If a mass is confirmed on the CT, we can then assign that ground
+truth to the chest x-ray. In the dermatology study we saw earlier,
+the ground truth for the test set was determined
+by a skin lesion biopsy. This is a medical procedure in
+which a sample of the skin with the suspected cancer is removed and
+tested in a lab. The results of this test are then used to
+set the ground truth for the photo image. We've now looked at two methods
+to set the ground truth or reference standard, consensus voting and
+having a more definitive test. With the second method, the difficulty is that we might not
+have these additional tests available. Not everyone who gets a chest
+x-ray gets a CT scan, and not everyone who has a potentially
+suspicious skin lesion gets a biopsy. Thus having a reliable ground truth with
+an existing data set often has to use the first method of getting a consensus ground truth on the existing data,
+which is the strategy that many medical AI studies use.
+Thus we have covered our three
+challenges with algorithm testing and
+some solutions in the context of medicine. We've seen how we can split by patient in
+the creation of training validation and test sets, how we can sample
+a minimum percent of a minority class examples in the test set, and
+how we can use consensus voting or a more definitive test
+to set the ground truth. Congratulations on
+completing the first week. This week you've learned about
+examples of deep learning models for tasks across several fields of medicine,
+and have learned about all the techniques
+needed to both train and test your own high-performance model for
+chest x-ray interpretation. You'll get to implement these
+ideas in the assignment and have your own chest x-ray
+interpretation model. In the next week,
+you'll learn about ideas and methods to evaluate
+the models that you've built. See you then.

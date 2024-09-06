@@ -1,0 +1,23 @@
+Let's understand the accuracy
+metric a little more. We'll see how we can use
+the accuracy to derive other useful evaluation metrics such as sensitivity
+and specificity. We'll start by
+interpreting accuracy as a probability
+of being correct. We can break down this
+probability of being correct as the sum of
+two probabilities. The probability that the model is correct and a patient has the disease plus the
+probability that the model is correct and
+the patient is normal. The law of conditional
+probability allows us to further
+expand this out. As a reminder, the law of conditional probability
+says that the probability of A and B is the probability of A given B times the
+probability of B. We can apply this to the
+first term to expand it out here and to the second term
+to expand it out here. What this allows us to do is interpret these terms over here. The probability of being
+correct given the patient has the disease means that
+we predicted positive. So we can replace this by
+the probability that we predict positive given
+a patient has disease. Similarly, the probability
+of being correct when the patient is normal would mean that we predicted negative, so we can replace this
+by the probability of predicting negative given
+a patient is normal.

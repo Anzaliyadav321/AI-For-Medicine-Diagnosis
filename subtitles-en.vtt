@@ -1,0 +1,147 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.750
+Let's understand the accuracy
+metric a little more.
+
+2
+00:00:03.750 --> 00:00:06.675
+We'll see how we can use
+the accuracy to derive
+
+3
+00:00:06.675 --> 00:00:09.000
+other useful evaluation metrics
+
+4
+00:00:09.000 --> 00:00:12.390
+such as sensitivity
+and specificity.
+
+5
+00:00:12.390 --> 00:00:15.555
+We'll start by
+interpreting accuracy
+
+6
+00:00:15.555 --> 00:00:18.540
+as a probability
+of being correct.
+
+7
+00:00:18.540 --> 00:00:21.300
+We can break down this
+probability of being
+
+8
+00:00:21.300 --> 00:00:25.045
+correct as the sum of
+two probabilities.
+
+9
+00:00:25.045 --> 00:00:26.930
+The probability that the model is
+
+10
+00:00:26.930 --> 00:00:28.880
+correct and a patient has
+
+11
+00:00:28.880 --> 00:00:31.430
+the disease plus the
+probability that
+
+12
+00:00:31.430 --> 00:00:35.460
+the model is correct and
+the patient is normal.
+
+13
+00:00:36.140 --> 00:00:39.275
+The law of conditional
+probability
+
+14
+00:00:39.275 --> 00:00:41.855
+allows us to further
+expand this out.
+
+15
+00:00:41.855 --> 00:00:43.940
+As a reminder, the law of
+
+16
+00:00:43.940 --> 00:00:47.045
+conditional probability
+says that the probability
+
+17
+00:00:47.045 --> 00:00:49.490
+of A and B is the probability of
+
+18
+00:00:49.490 --> 00:00:52.355
+A given B times the
+probability of B.
+
+19
+00:00:52.355 --> 00:00:56.660
+We can apply this to the
+first term to expand it out
+
+20
+00:00:56.660 --> 00:01:02.100
+here and to the second term
+to expand it out here.
+
+21
+00:01:02.290 --> 00:01:05.420
+What this allows us to do is
+
+22
+00:01:05.420 --> 00:01:09.410
+interpret these terms over here.
+
+23
+00:01:09.410 --> 00:01:14.150
+The probability of being
+correct given the patient
+
+24
+00:01:14.150 --> 00:01:18.275
+has the disease means that
+we predicted positive.
+
+25
+00:01:18.275 --> 00:01:21.290
+So we can replace this by
+the probability that we
+
+26
+00:01:21.290 --> 00:01:24.889
+predict positive given
+a patient has disease.
+
+27
+00:01:24.889 --> 00:01:28.820
+Similarly, the probability
+of being correct when
+
+28
+00:01:28.820 --> 00:01:31.130
+the patient is normal would
+
+29
+00:01:31.130 --> 00:01:33.559
+mean that we predicted negative,
+
+30
+00:01:33.559 --> 00:01:36.110
+so we can replace this
+by the probability of
+
+31
+00:01:36.110 --> 00:01:40.800
+predicting negative given
+a patient is normal.

@@ -1,0 +1,144 @@
+WEBVTT
+
+1
+00:00:00.720 --> 00:00:05.090
+Sensitivity tells us given we
+know a patient has a disease,
+
+2
+00:00:05.090 --> 00:00:08.750
+what is the probability that
+the model predicts positive?
+
+3
+00:00:08.750 --> 00:00:14.830
+In the clinic, the doctor using an AI model
+may be interested in a different question.
+
+4
+00:00:14.830 --> 00:00:18.950
+And that is given the model
+predicts positive on a patient,
+
+5
+00:00:18.950 --> 00:00:22.900
+what is the probability that
+they actually have the disease?
+
+6
+00:00:22.900 --> 00:00:27.115
+This is called the positive
+predictive value or PPV of the model.
+
+7
+00:00:28.350 --> 00:00:31.080
+Similarly, while specificity asks,
+
+8
+00:00:31.080 --> 00:00:36.260
+what is the probability the model predicts
+negative, given a patient is normal?
+
+9
+00:00:36.260 --> 00:00:41.700
+The doctor may be interested in knowing
+the probability that a patient is normal,
+
+10
+00:00:41.700 --> 00:00:44.450
+given the model prediction is negative.
+
+11
+00:00:44.450 --> 00:00:49.680
+This is called the negative
+predictive value or NPV of a model.
+
+12
+00:00:49.680 --> 00:00:52.503
+Let's compute the PPV and
+NPV on an example.
+
+13
+00:00:52.503 --> 00:00:59.301
+Once again, we have ten examples on
+which a model has made its predictions.
+
+14
+00:00:59.301 --> 00:01:01.809
+First, let's compute PPV.
+
+15
+00:01:01.809 --> 00:01:09.230
+PPV can be computed as the fraction of
+positive examples that are also disease.
+
+16
+00:01:09.230 --> 00:01:10.811
+So in the denominator,
+
+17
+00:01:10.811 --> 00:01:15.164
+we'll have the number of positive
+which is one two, three four.
+
+18
+00:01:15.164 --> 00:01:19.990
+And in the numerator,
+the number that is positive and disease.
+
+19
+00:01:19.990 --> 00:01:24.730
+So that's one, that's two and
+we just have two, so
+
+20
+00:01:24.730 --> 00:01:28.130
+2 over 4, or 0.5.
+
+21
+00:01:28.130 --> 00:01:29.355
+Let's now look at NPV.
+
+22
+00:01:29.355 --> 00:01:36.292
+NPV can be computed as the fraction of
+negative examples that are also normals.
+
+23
+00:01:36.292 --> 00:01:41.235
+So in the denominator, we're looking
+at everywhere the model prediction is negative,
+
+24
+00:01:41.235 --> 00:01:44.980
+it's one, two,
+three, four, five, six.
+
+25
+00:01:44.980 --> 00:01:49.140
+And in the numerator all
+the places where it's negative and
+
+26
+00:01:49.140 --> 00:01:50.920
+the ground truth is normal.
+
+27
+00:01:50.920 --> 00:01:56.190
+So that's one, that's two,
+that's three, that's four,
+
+28
+00:01:56.190 --> 00:02:02.390
+and that's five, so
+this 5 over 6, or 0.83.
+
+29
+00:02:02.390 --> 00:02:07.700
+Now that we've seen PPV and NPV,
+in addition to sensitivity and
+
+30
+00:02:07.700 --> 00:02:11.070
+specificity, let's look at how
+they relate to each other.

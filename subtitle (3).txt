@@ -1,31 +1,20 @@
-Let's cover the second
-challenge of set sampling. Let's say we sampled a test
-set from the dataset. Sometimes, the size of the test set is
-a fraction of the full dataset like 10%. Other times, in human comparison studies, because the test set needs to be annotated
-by human readers, the bottleneck for the test set size is how many examples
-can readers be expected to read? Typically, test sets contain
-at least hundreds of examples in medical AI studies. The challenge with sampling a test
-set is that when we're randomly sampling a test set of hundreds
-of examples from the dataset, we might not sample any patients
-that actually have a disease. Here, we might not sample any examples
-where the label for mass is 1. Thus, we would have no way to actually
-test the performance of the model on these positive cases. This is especially a problem with
-medical data where we might already have a small dataset and
-not that many examples of each disease. One way that this is tackled when creating
-test sets is to sample a test set such that we have at least X% of
-examples of our minority class. Here, the minority class
-is simply the class for which we have few examples like here
-examples where mass is present. One common choice of X is 50%. So for sampling a dataset of 100 examples, we would have 50 examples of mass and
-50 of not mass. This ensures that the study will have
-sufficient numbers to get a good estimate of the performance of the model both
-on non-disease and on disease examples. Once we sample the test set, typically, the validation set is
-sampled next before training. Because we want our validation set to
-reflect the distribution in the test set, typically, the same
-sampling strategy is used. We might decide to have once again
-100 examples in the validation set of which 50 are mass and 50 are non-mass. Finally, the remaining patients can
-be included in the training set. Because the test and
-validation set have been artificially sampled to have
-a large fraction of mass examples, the training set will have a much
-smaller fraction of mass examples. You have seen that we can still train
-a model in the presence of imbalance data. So this covers our second
-challenge of set sampling.
+In this lesson, we'll look at one of the most useful tools
+to evaluate medical models, the ROC curve. We'll see how the ROC curve allows
+us to visually plot the sensitivity of a model against the specificity of the
+model at different decision thresholds. A chest x-ray classification model outputs
+a probability of disease given an x-ray. This output can be transformed into
+a diagnosis using a threshold or operating point. When the probability is above a threshold, then we interpret this as positive or
+saying the patient has the disease. When the probability is
+below the threshold, we interpret this as negative or saying
+the patient does not have the disease. For example, if our score is 0.7 and
+our threshold is 0.5, then we would classify
+this example as positive. But if our score was 0.2 and
+our threshold was 0.5, we would classify this
+example as negative. Our choice of threshold affects
+the metrics we have looked at thus far. For example, if we had a threshold t of 0 then we would classify
+everything as positive. And so our sensitivity would be one
+while our specificity would be zero. Similarly, if we had chosen a threshold
+of one we would classify everything as negative, so our specificity would be
+one while our sensitivity would be zero. Let's dive further into how our
+choice of threshold also called the operating point
+affects these quantities.

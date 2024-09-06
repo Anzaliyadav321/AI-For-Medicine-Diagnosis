@@ -1,39 +1,24 @@
-The challenge is that all of these architectures are
-data hungry and benefit from the millions of examples found in image
-classification datasets. In medical problems,
-how can we still apply these techniques when we don't
-have millions of examples? One solution, is to
-pre-train the network. Here the idea is to
-first have the network, look at natural images, and learn to identify objects
-such as penguins, or cats, or dogs, then use this
-network as a starting point for learning in
-medical imaging task by copying over the
-learned features. The network can then further
-be trained to look at chest X-rays and identify the presence and
-absence of diseases. The idea of this process, is that when we're learning our first task of
-identifying cats or dogs, the network will learn
-general features that will help it's learning
-on the medical task. An example of this, might be that the features
-that are useful to identify the edges on a penguin, are also useful for
-identifying edges on a lung, which are then helpful to
-identify certain diseases. Then when we transfer these
-features to our new network, the network can learn
-the new task of chest X-ray interpretation
-with a better starting point. This first step, is
-called pre-training, and the second step,
-is called fine-tuning. It is generally understood that the early layers
-of the network, capture low-level image features that are broadly generalizable, while the later layers
-capture details that are more high-level or more
-specific to a task. So for instance, the
-early layer might learn about the edges of an object, and this might be useful for chest X-ray interpretation later. But the later layers might learn how to
-identify the head of a penguin and may not be useful for chest
-X-ray interpretation. So when we fine-tune the
-network on chest X-rays, instead of fine-tuning all
-features we've transferred, we can freeze the
-features learned by the shallow layers and just
-fine-tune the deeper layers. In practice, two of the most common design
-choices are one, to fine-tune all of the layers, and two, only
-fine-tune the later or the last layer and not
-fine-tune the earlier layers. This approach of pre-training
-and fine-tuning, is also called transfer
-learning and is an effective way to tackle the small dataset size challenge.
+Sensitivity tells us given we
+know a patient has a disease, what is the probability that
+the model predicts positive? In the clinic, the doctor using an AI model
+may be interested in a different question. And that is given the model
+predicts positive on a patient, what is the probability that
+they actually have the disease? This is called the positive
+predictive value or PPV of the model. Similarly, while specificity asks, what is the probability the model predicts
+negative, given a patient is normal? The doctor may be interested in knowing
+the probability that a patient is normal, given the model prediction is negative. This is called the negative
+predictive value or NPV of a model. Let's compute the PPV and
+NPV on an example. Once again, we have ten examples on
+which a model has made its predictions. First, let's compute PPV. PPV can be computed as the fraction of
+positive examples that are also disease. So in the denominator, we'll have the number of positive
+which is one two, three four. And in the numerator,
+the number that is positive and disease. So that's one, that's two and
+we just have two, so 2 over 4, or 0.5. Let's now look at NPV. NPV can be computed as the fraction of
+negative examples that are also normals. So in the denominator, we're looking
+at everywhere the model prediction is negative, it's one, two,
+three, four, five, six. And in the numerator all
+the places where it's negative and the ground truth is normal. So that's one, that's two,
+that's three, that's four, and that's five, so
+this 5 over 6, or 0.83. Now that we've seen PPV and NPV,
+in addition to sensitivity and specificity, let's look at how
+they relate to each other.

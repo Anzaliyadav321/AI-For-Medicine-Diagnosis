@@ -1,0 +1,31 @@
+Confidence intervals allow us to say that using our sample, we're 95 percent confident that the population accuracy p is
+in the interval 0.72, 0.88. 0.72 is called the
+lower bound and 0.88, the upper bound of this interval. The calculation of these
+confidence intervals is beyond the scope
+of this course, but it's important to understand
+their interpretation. When we report the accuracy
+of a model on the sample, we report it with the mean
+and the confidence intervals. The 95 percent confidence
+intervals here allow us to say that with 95
+percent confidence, p is in the interval 0.72, 0.88. What we haven't seen is what it means to be 95 percent confident. 95 percent confidence
+does not say there is a 95 percent probability that
+p lies within the interval. It also does not say
+that 95 percent of the sample accuracies lie
+within this interval. The interpretation of 95 percent confidence
+is a little more nuanced and requires us to think about making repeated samples. Let's dive into this. Let's say we were able
+to repeatedly sample in 100 patients from the
+population several times. Each time we get a
+different sample and hence a different
+sample accuracy. We can also compute the confidence intervals
+associated with each sample. We can look at these
+samples on a plot. For each of these samples, we can plot the
+sample accuracies, here represented by the circle, and the lower and upper bounds of the confidence intervals
+of the samples. On this plot, we also have the true population accuracy
+plotted as the dotted line. This is unobserved. Note that most of these samples contain the population
+accuracy, this vertical line. Here, six out of the seven
+contain it and one misses it. In fact, when we have 95
+percent confidence intervals, 95 percent of the samples will contain the
+population accuracy. Ninety-five percent is what's called our confidence level. Thus, the interpretation of 95 percent confidence is
+that in repeated sampling, this method produces
+intervals that include the population accuracy in
+about 95 percent of samples.

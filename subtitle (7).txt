@@ -1,0 +1,28 @@
+In practice, we don't compute
+the confidence intervals for many samples. We only compute our model
+performance on one sample. For our sample, the computed confidence
+interval may or may not contain p. However, we can be 95%
+confident that it does. One of the factors that affects
+the width of the confidence intervals, which is given by how close these
+numbers are, is the sample size. Let's say we drew another
+sample from the population, but this time with 500 patients. This is 5 times as large
+as our previous sample. We can expect that we'll
+have a better estimate of the population accuracy
+using the larger sample. We can see that even though
+the model gets an accuracy of 0.8 on both samples, notice that the confidence
+intervals are tighter for the larger sample and
+wider for the smaller sample. Thus a larger sample is giving
+us a better estimate of this population accuracy because these
+numbers are closer together. To summarize, confidence
+intervals are useful because even when we cannot run the model
+on a whole population, we can at least use a test result
+on a sample to express the range in which we're pretty sure
+our population accuracy lies. Congratulations on completing
+this week on model evaluation. As you've seen,
+we need a lot more than accuracy to be able to properly evaluate models
+in medicine because we care about understanding exactly when a model
+works on patients and when it does not. In this week's assignment,
+you'll be able to apply these ideas to evaluate your chest x-ray
+model more comprehensively. Next week, we'll be jumping from
+medical image classification to medical image segmentation, where you'll be building a brain tumor
+segmentation model from MRI data. See you then.

@@ -1,36 +1,41 @@
-Now that you've seen how you would
-go about training a model for medical diagnosis, let's talk about how
-you would go about testing such a model. You will learn about the proper use of
-training, validation, and test sets. And about the need for strong ground
-truth in order to evaluate your models. When we apply machine
-learning to a dataset, we usually split it into a training and
-a test set. Our training set is used for the
-development and selection of models and our test set for
-the final reporting of our results. In reality, the training dataset is
-further split into a training set and a validation set, where the training
-set is used to learn a model and the validation set is used for
-hyper parameter tuning and giving an estimate of the model
-performance on the test set. Sometimes the split into a training and validation set is done multiple times
-in a method called cross validation to reduce variability in our
-estimate of the model performance. These sets also go by different names
-sometimes like validation can be called tuning or depth set, the training set
-can be called the development set, and the test set can go by holdout or
-even more confusing the validation set. We will stick to the terms training,
-validation, and test set for our purposes. We'll cover three challenges with building
-these sets in the context of medicine. The first challenge relates to how
-we make these test sets independent, the second relates to how we sample them,
-and the third relates to how
-we set the ground truth. Let's cover the problem
-of patient overlap first. Let's say a patient comes in twice for an
-x-ray, once in June and once in November. Both times, they're wearing a necklace
-when they have their x-ray taken. One of their x-rays is sampled
-as part of the training set and the other as part of test. We train our deep learning model and find that it correctly predicts normal for
-the x-ray in the test set. The problem is that it's possible
-that the model actually memorized to output normal when it saw
-the patient with a necklace on. This is not hypothetical,
-deep learning models can unintentionally memorize training
-data, and the model could memorize rare or unique training data aspects of
-the patient, such as the necklace, which could help it get the right answer
-when testing on the same patient. This would lead to an overly
-optimistic test set performance, where we would think that our model
-is better than it actually is.
+Out of this expression pop out two very important
+quantities that are the bread and butter of
+evaluation medicine, that's sensitivity
+and specificity. These terms are also known
+by true positive rate and true negative rate which refer to the same two quantities. Sensitivity is the probability
+that the model classifies a patient as having the disease given that
+they have the disease. Specificity is the probability
+that the model classifies a patient as being normal
+given that they are normal. Thus, we've broken our
+global measure of accuracy down into the useful quantities of sensitivity and specificity. The other piece of useful terminology is for the
+remaining terms over here. The probability of a
+patient having disease in a population is called
+the prevalence. The probability of being
+normal is simply one minus the probability of having disease or one minus the prevalence. We can thus write
+accuracy in terms of sensitivity, specificity,
+and prevalence. Why is this useful? This equation allows
+us to see accuracy as a weighted average of
+sensitivity and specificity. The weight associated with the sensitivity is
+the prevalence, and the weight associated with the specificity is one
+minus the prevalence. This equation also allows
+us to find out any of these quantities given the
+other three quantities. Let's see this using an example. First, we compute sensitivity. Sensitivity can be computed
+as the fraction of disease examples that
+are also positive. So in the denominator, we have the number of disease
+examples, which is 1, 2, 3, and in the numerator the number of positive
+and disease examples. So this going to be 1, this is not going
+to be another 1, this is going to be 2. So we have 2 out of 3 or 0.67. Then we compute specificity. Specificity can be
+computed as the fraction of normal examples that
+are also negative. So in the denominator, we have the number of normal
+examples which is going to be 7 and in the numerator, the number of negative
+and normal examples, this is going to be 1, 2, 3, 4, 5, not 6, 6, and this is 6 over 7 to get 0.86. So that's the computation of
+sensitivity and specificity. Now let's look at the prevalence
+of disease in this set. This is simply the fraction of disease examples computed as the number of disease
+examples over the total number of examples
+which is 3 over 10 or 0.3. Now, using the relationship
+between sensitivity, specificity, and prevalence, we can also get to the accuracy. So this is going to be equal to 0.67 times the prevalence 0.3, plus the specificity 0.86, times 1 minus prevalence, so 1 minus 0.3 is 0.7, and this comes out to 0.8. We can confirm with a simple calculation
+of the fraction that we get correct that the
+accuracy is indeed 0.8. Thus, we have covered
+two metrics we can use to evaluate diagnostic AI models including sensitivity
+and specificity and we've seen how they're
+related now to accuracy.

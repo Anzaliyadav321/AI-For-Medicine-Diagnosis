@@ -1,24 +1,46 @@
-Sensitivity tells us given we
-know a patient has a disease, what is the probability that
-the model predicts positive? In the clinic, the doctor using an AI model
-may be interested in a different question. And that is given the model
-predicts positive on a patient, what is the probability that
-they actually have the disease? This is called the positive
-predictive value or PPV of the model. Similarly, while specificity asks, what is the probability the model predicts
-negative, given a patient is normal? The doctor may be interested in knowing
-the probability that a patient is normal, given the model prediction is negative. This is called the negative
-predictive value or NPV of a model. Let's compute the PPV and
-NPV on an example. Once again, we have ten examples on
-which a model has made its predictions. First, let's compute PPV. PPV can be computed as the fraction of
-positive examples that are also disease. So in the denominator, we'll have the number of positive
-which is one two, three four. And in the numerator,
-the number that is positive and disease. So that's one, that's two and
-we just have two, so 2 over 4, or 0.5. Let's now look at NPV. NPV can be computed as the fraction of
-negative examples that are also normals. So in the denominator, we're looking
-at everywhere the model prediction is negative, it's one, two,
-three, four, five, six. And in the numerator all
-the places where it's negative and the ground truth is normal. So that's one, that's two,
-that's three, that's four, and that's five, so
-this 5 over 6, or 0.83. Now that we've seen PPV and NPV,
-in addition to sensitivity and specificity, let's look at how
-they relate to each other.
+In this very exciting lesson, you'll learn how you
+can train and evaluate your segmentation model for identifying tumors in MRI data. You will learn about the
+UNet architecture and the procedure that we can use to successfully train a
+segmentation model. As you'll quickly see, working with 3D
+medical data provides some significant challenges
+and you'll learn about some creative
+ideas to tackle them. We'll first start by talking
+about representing MRI data. We want to be able to
+represent the MRI data in a form that we can input
+into the segmentation model. As you've seen, our
+MRI images are not just a single 2D
+image like X-rays, and MRI sequence is a 3D volume here seen
+in the axial view. Furthermore, an MRI example will be made up of multiple sequences, and thus will consist
+of multiple 3D volumes. We'll look at how we can combine these multiple 3D volumes
+into one 3D volume. To do so, let's pick a
+slice through the brain. This is a slice through
+the brain viewed on three different MRI sequences. The key idea that we will use to combine the
+information from different sequences is to treat them as different channels. We can say one of the channels
+is red, one is green, and one is a blue channel
+in the same way that we have three channels
+of an RGB image. The analogy of the three channels representing the RGB channels is mostly useful for us to visualize how we're going
+to combine the channels. There's nothing special
+about the number three. The idea of using
+different channels also extends to when we may have
+four or five sequences, which can be represented
+with four or five channels. Once each sequence is represented with the
+different channel, what we do now is combine the sequences together
+to produce one image, which is the combination
+of all of the sequences. To us, this is now an RGB image. To the machine, these are channels stacked in
+the depth dimension. One challenge with combining these sequences is that they may not be aligned with each other. For instance, if a patient moves between the acquiring of
+each of these sequences, their head might be tilted in one sequence compared
+with the others. If the images are
+not aligned with each other when we combine them, the brain region at one location in the
+red channel does not correspond to the same location in the green or
+the blue channels. So how do we fix this
+alignment problem? A preprocessing approach
+that's often used to fix this is called
+image registration. The basic idea with
+image registration is to transform
+the images so that they're aligned or
+registered to each other. We won't go into image
+registration in further detail. In the assignment,
+you'll work with images that have already
+been registered. However, it is useful
+to be aware of image registration
+as a useful tool when trying to combine 3D volumes.

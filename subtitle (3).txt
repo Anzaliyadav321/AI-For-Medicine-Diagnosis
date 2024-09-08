@@ -1,20 +1,34 @@
-In this lesson, we'll look at one of the most useful tools
-to evaluate medical models, the ROC curve. We'll see how the ROC curve allows
-us to visually plot the sensitivity of a model against the specificity of the
-model at different decision thresholds. A chest x-ray classification model outputs
-a probability of disease given an x-ray. This output can be transformed into
-a diagnosis using a threshold or operating point. When the probability is above a threshold, then we interpret this as positive or
-saying the patient has the disease. When the probability is
-below the threshold, we interpret this as negative or saying
-the patient does not have the disease. For example, if our score is 0.7 and
-our threshold is 0.5, then we would classify
-this example as positive. But if our score was 0.2 and
-our threshold was 0.5, we would classify this
-example as negative. Our choice of threshold affects
-the metrics we have looked at thus far. For example, if we had a threshold t of 0 then we would classify
-everything as positive. And so our sensitivity would be one
-while our specificity would be zero. Similarly, if we had chosen a threshold
-of one we would classify everything as negative, so our specificity would be
-one while our sensitivity would be zero. Let's dive further into how our
-choice of threshold also called the operating point
-affects these quantities.
+We can represent the values of p and
+g over each of the pixels in a table. Here, each row of the table
+is a cell location, along with their corresponding
+prediction value and ground truth value. For instance, i4, here,
+corresponds to this cell over here, which specifies that
+the probability output was 0.8, and the ground truth was 0. Representing p and g in this table will allow us to more
+clearly understand the loss function. We'll use the soft dice loss to
+optimize the segmentation model. The soft dice loss is a popular loss
+function for segmentation models. The advantage of the soft dice
+loss is that it works well in the presence of imbalanced data. This is especially important in our
+task of brain tumor segmentation, when a very small fraction of
+the brain will be tumor regions. Let's look at the soft dice loss. The soft dice loss will measure
+the error between our prediction map, P, and our ground truth map, G. This part of the loss, over here,
+measures the overlap between the predictions and the ground truth,
+and we want this fraction to be large. Here, when G over here is equal to 1, then we want P to be close to 1 so that this numerator term is large. We also want the denominator to be small. So when G equals 0,
+we want P to be close to 0. Otherwise, this term would be large and
+the denominator would be large. Now, we take 1 minus this fraction,
+such that a higher loss corresponds to a small overlap and
+a low loss corresponds to a high overlap. With this intuition, let's now compute
+the loss for this particular example. To compute the numerator of the loss for
+this example, we multiply P and
+G element wise to get pigi. For instance, 0.9 times 1 gives us 0.9,
+so that's entered here. To compute the denominator,
+we need the sum of squares of pi and the sum of squares of gi. Similarly, we can compute
+these by squaring the p column to get pi squared and
+g column to get gi squared. We can then sum up these columns to
+get the sum over all of the pixels. We can plug in these values
+into the soft dice loss for
+this particular example as 1- 2 times 2.2/2.47 + 3, which is 1- 4.4/5.47. And this comes out to approximately 0.2, which is the loss with this
+particular prediction, and with this particular ground truth
+for this example. The model optimizes this loss function
+to get better and better segmentations. This completes all of the pieces we need to be able to train our brain
+tumor segmentation model. We'll look at the evaluation of
+the segmentation model next.

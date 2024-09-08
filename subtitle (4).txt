@@ -1,35 +1,27 @@
-Let's say we have a test
-set of 15 chest x-rays, which we ran through
-our model to get an output probability or
-a score for each of them. We can plot these
-15 outputs scores on a number line
-between zero and one. Now some of these
-x-rays will have a ground truth of disease
-and some will be normal. So let's color them accordingly. Here disease is red
-and normal is blue. We can pick a threshold small t, that sets everything on the
-right of the threshold as we classify positive and everything on the left of the threshold, we classify as negative. Now notice we can compute the sensitivity and
-specificity of the model. Here, the denominator for sensitivity is the total
-number of disease examples, which we can count as
-the total number of red, which is going to be seven. The numerator is how many
-of those are positive, or in other words, on the right side
-of the threshold. This is all of them
-except one, which is six. So our sensitivity is
-six over seven, or 0.85. Similarly, the denominator for specificity is the total
-number of normal examples, which is the total number of blue circles here,
-which is eight. The numerator is how many
-of those are negative, or in other words, on the left side
-of the threshold. This is all except
-two, so this is six. So our specificity is
-six over eight or 0.75. Let's say we now change the threshold such
-that it was higher. We now expect, we classify fewer examples as positive and
-more examples as negative. We can now recompute the
-sensitivity and specificity. Note that the sensitivity
-has gone down, our numerator has fallen, and the specificity has gone up, our numerator has increased because we are now
-correctly classifying more normal patients
-and incorrectly classifying more
-disease patients. We can take this to the extreme and set the threshold
-to be at one. In this case, sensitivity
-is going to be zero since no examples
-are classified positive, and specificity is
-going to be one, since all the examples are
-classified as negative.
+Now that you've learned
+about classification and segmentation models
+for medical imaging, and you've built your chest x-ray
+classification model earlier, you might wonder why
+the systems aren't in use today at hospitals
+or clinics around us. In this lesson, you will learn about some of the challenges and opportunities to
+make these systems part of routine medical practice. One of the main challenges with applying AI algorithms
+in the clinic is achieving reliable
+generalization. Generalization can be hard
+due to a variety of reasons. Let's look at an example. Let's say we developed our
+chest x-ray model on US data, and we wanted to apply
+it to a hospital in a different
+country, say India. In India, the patient
+population might have x-rays that looked different than what the model
+has been trained on. As a very concrete example, tuberculosis is quite
+prevalent in India, but unlikely to be
+as prevalent in the hospitals where we've
+trained our model in the US. Before applying the
+model in India, we'd want to test the model on its ability to detect
+TB, or tuberculosis. Let's look at another example. This time with our model for
+brain tumor segmentation. We've been able to measure
+the model performance on data collected from a few
+countries over a few years, but MRI technology is not standard across the
+globe and across time. The latest scanners have much higher resolution
+than older scanners. Before we apply the segmentation
+model in a new hospital, we'd want to make sure
+that the model is able to generalize to the resolution of the scanner at the hospital.
